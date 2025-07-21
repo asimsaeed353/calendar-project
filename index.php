@@ -4,11 +4,18 @@ include 'calendar.php';
 
 ?>
 
+<?php if ($successMsg): ?>
+  <div class="alert success"><?= $successMsg ?></div>
+<?php elseif ($errorMsg): ?>
+  <div class="alert error"><?= $errorMsg ?></div>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="My Own Calendar Project">
     <title>Calendar Ease</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@400;600;700&display=swap" rel="stylesheet">
@@ -30,9 +37,9 @@ include 'calendar.php';
     <!-- Calendar Section -->
     <div class="calendar">
         <div class="nav-btn-container">
-            <button class="nav-btn">⏮</button>
-            <h2 class="monthYear" style="margin: 0"></h2>
-            <button class="nav-btn">⏭</button>
+            <button onclick="changeMonth(-1)" class="nav-btn">⏮</button>
+            <h2 id="monthYear" style="margin: 0"></h2>
+            <button onclick="changeMonth(1)" class="nav-btn">⏭</button>
         </div>
 
         <div class="calendar-grid" id="calendar"></div>
@@ -42,11 +49,11 @@ include 'calendar.php';
 
     <div class="modal" id="eventModal">
         <div class="modal-content">
-            <div id="eventSelectorWrapper">
+            <div id="eventSelectorWrapper" style="display: none;">
                 <label for="eventSelector">
                     <strong>Select Event:</strong>
                 </label>
-                <select id="eventSelector">
+                <select id="eventSelector" onchange="handleEventSelection(this.value)">
                     <option disabled selected>Choose Event...</option>
                 </select>
             </div>
@@ -87,7 +94,7 @@ include 'calendar.php';
             </form>
 
             <!-- ❌ Cancel -->
-            <button type="button" class="submit-btn">❌ Cancel</button>
+            <button type="button" class="submit-btn" onclick="closeModal()" style="background:#ccc">❌ Cancel</button>
         </div>
     </div>
 

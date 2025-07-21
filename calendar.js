@@ -34,15 +34,16 @@ function renderCalendar(date = new Date()) {
 
   // Loop through days
   for (let day = 1; day <= totalDays; day++) {
-    const dateStr = `${year} - ${String(month + 1).padStart(2, "0")} - ${String(
-      day
-    ).padStart(2, "0")}`;
+    // const dateStr = `${year} - ${String(month + 1).padStart(2, "0")} - ${String(
+    //   day
+    // ).padStart(2, "0")}`;
+    const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
     const cell = document.createElement("div");
     cell.className = "day";
 
     if (
-      day === today.getDate &&
+      day === today.getDate() &&
       month === today.getMonth() &&
       year === today.getFullYear()
     ) {
@@ -74,7 +75,8 @@ function renderCalendar(date = new Date()) {
 
       const timeEl = document.createElement("div");
       timeEl.className = "time";
-      timeEl.textContent = "⏰".event.start_time + " - " + event.end_time;
+      // timeEl.textContent = "⏰".event.start_time + " - " + event.end_time;
+      timeEl.textContent = `⏰ ${event.start_time} - ${event.end_time}`;
 
       ev.appendChild(courseEl);
       ev.appendChild(instructorEl);
@@ -101,7 +103,7 @@ function renderCalendar(date = new Date()) {
     if (eventsToday.length > 0) {
       const editBtn = document.createElement("button");
       editBtn.className = "overlay-btn";
-      editBtn.textContent = "Edit";
+      editBtn.textContent = "✏️ Edit";
       editBtn.onclick = (e) => {
         e.stopPropagation();
         openModalForEdit(eventsToday);
@@ -146,12 +148,12 @@ function openModalForEdit(eventsOnDate) {
 
   const selector = document.getElementById("eventSelector");
   const wrapper = document.getElementById("eventSelectorWrapper");
-  selector.innerHTML = "<option disabled selected>Choose event...</option";
+  selector.innerHTML = "<option disabled selected>Choose event...</option>";
 
   eventsOnDate.forEach((e) => {
     const option = document.createElement("option");
     option.value = JSON.stringify(e);
-    option.textContent = `${e.title}. (${e.start} ➡ ${e.end}`;
+    option.textContent = `${e.title} (${e.start} ➡️ ${e.end})`;
     selector.appendChild(option);
   });
 
@@ -196,9 +198,9 @@ function updateClock() {
   const now = new Date();
   const clock = document.getElementById("clock");
   clock.textContent = [
-    now.getHours().toString.padStart(2, "0"),
-    now.getMinutes().toString.padStart(2, "0"),
-    now.getSeconds().toString.padStart(2, "0"),
+    now.getHours().toString().padStart(2, "0"),
+    now.getMinutes().toString().padStart(2, "0"),
+    now.getSeconds().toString().padStart(2, "0"),
   ].join(":");
 }
 

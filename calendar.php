@@ -18,7 +18,7 @@
         $startTime = ($_POST['start_time'] ?? '');
         $endTime = ($_POST['end_time'] ?? '');
 
-        if($course && $instructor && $startDate && $endDate) {
+        if ($course && $instructor && $start && $end && $startTime && $endTime) {
             $statement = $conn->prepare(
                 "INSERT INTO appointments (course_name, instructor_name, start_date, end_date, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?)"
             );
@@ -111,7 +111,7 @@
             while($start <= $end) {
                 $eventsFromDB[] = [
                     'id' => $row['id'],
-                    'title' => "{$row['course_name']} -{$row['instructor_name']}",
+                    'title' => "{$row['course_name']} - {$row['instructor_name']}",
                     'date' => $start->format('Y-m-d'),
                     'start' => $row['start_date'],
                     'end' => $row['end_date'],
