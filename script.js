@@ -34,9 +34,6 @@ function renderCalendar(date = new Date()) {
 
   // Loop through days
   for (let day = 1; day <= totalDays; day++) {
-    // const dateStr = `${year} - ${String(month + 1).padStart(2, "0")} - ${String(
-    //   day
-    // ).padStart(2, "0")}`;
     const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 
     const cell = document.createElement("div");
@@ -69,9 +66,9 @@ function renderCalendar(date = new Date()) {
       courseEl.className = "course";
       courseEl.textContent = event.title.split(" - ")[0];
 
-      const instructorEl = document.createElement("div");
-      instructorEl.className = "instructor";
-      instructorEl.textContent = "👨‍🏫 " + event.title.split(" - ")[1];
+      const noteEl = document.createElement("div");
+      noteEl.className = "note";
+      noteEl.textContent = "📃 " + event.title.split(" - ")[1];
 
       const timeEl = document.createElement("div");
       timeEl.className = "time";
@@ -79,7 +76,7 @@ function renderCalendar(date = new Date()) {
       timeEl.textContent = `⏰ ${event.start_time} - ${event.end_time}`;
 
       ev.appendChild(courseEl);
-      ev.appendChild(instructorEl);
+      ev.appendChild(noteEl);
       ev.appendChild(timeEl);
 
       eventBox.appendChild(ev);
@@ -125,7 +122,7 @@ function openModalForAdd(dateStr) {
   document.getElementById("eventId").value = "";
   document.getElementById("deleteEventId").value = "";
   document.getElementById("courseName").value = "";
-  document.getElementById("instructorName").value = "";
+  document.getElementById("note").value = "";
   document.getElementById("startDate").value = dateStr;
   document.getElementById("endDate").value = dateStr;
   document.getElementById("startTime").value = "09:00";
@@ -173,9 +170,9 @@ function handleEventSelection(eventJSON) {
   document.getElementById("eventId").value = event.id;
   document.getElementById("deleteEventId").value = event.id;
 
-  const [course, instructor] = event.title.split(" - ").map((e) => e.trim());
+  const [course, note] = event.title.split(" - ").map((e) => e.trim());
   document.getElementById("courseName").value = course || "";
-  document.getElementById("instructorName").value = instructor || "";
+  document.getElementById("note").value = note || "";
   document.getElementById("startDate").value = event.start || "";
   document.getElementById("endDate").value = event.end || "";
   document.getElementById("startTime").value = event.start_time || "";

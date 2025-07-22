@@ -16,7 +16,7 @@ include 'calendar.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="My Own Calendar Project">
-    <title>Calendar Ease</title>
+    <title>DailyPlot</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@400;600;700&display=swap" rel="stylesheet">
 
@@ -26,7 +26,7 @@ include 'calendar.php';
 <body>
     
     <header>
-        <h1>🗓 Course Calendar <br> Calendar Ease </h1>
+        <h1>🗓 DailyPlot</h1>
     </header>
 
     <!-- Clock -->
@@ -63,11 +63,11 @@ include 'calendar.php';
                 <input type="hidden" name="action" id="formAction" value="add">
                 <input type="hidden" name="event_id" id="eventId">
 
-                <label for="courseName">Course Title:</label>
+                <label for="courseName">Appointment Title:</label>
                 <input type="text" name="course_name" id="courseName" required>
 
-                <label for="instructorName">Instructor Name:</label>
-                <input type="text" name="instructor_name" id="instructorName" required>
+                <label for="note">Note:</label>
+                <input type="text" name="note" id="note" required>
 
                 <label for="startDate">Start Date:</label>
                 <input type="date" name="start_date" id="startDate" required>
@@ -103,7 +103,6 @@ include 'calendar.php';
         <script>
             const events = <?= json_encode($eventsFromDB, JSON_UNESCAPED_UNICODE) ?>
         </script>
-
-        <script src="calendar.js" ></script>
+        <script src="script.js" ></script>
 </body>
 </html>

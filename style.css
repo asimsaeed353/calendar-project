@@ -86,7 +86,8 @@ header {
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
-    scroll-snap-type: x mandatory; /* calendar cells to be scrollable */
+    scroll-snap-type: x mandatory;
+    /* calendar cells to be scrollable */
     gap: 10px;
   }
 
@@ -154,7 +155,7 @@ header {
   font-size: 13px;
 }
 
-.event .instructor {
+.event .note {
   font-size: 12px;
   opacity: 0.85;
 }
