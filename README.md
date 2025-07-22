@@ -1,7 +1,7 @@
-# Appointment Calendar
+# DailyPlot
 
 ## Overview
-Appointment Calendar is a web-based application built with PHP, MySQL, JavaScript, and CSS to manage general appointments. Users can create, edit, and delete appointments, with a calendar view to display them across specified date ranges. The application features a user-friendly interface with a modal for appointment management and a live digital clock for real-time updates.
+DailyPlot is a web-based application built with PHP, MySQL, JavaScript, and CSS to manage general appointments. Users can create, edit, and delete appointments, with a calendar view to display them across specified date ranges. The application features a user-friendly interface with a modal for appointment management and a live digital clock for real-time updates.
 
 ## Features
 - **Calendar View**: Displays a monthly grid with appointments, highlighting the current day.
