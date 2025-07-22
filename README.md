@@ -14,4 +14,4 @@ Appointment Calendar is a web-based application built with PHP, MySQL, JavaScrip
 - **Persistent Storage**: Uses a MySQL database to store appointment data.
 
 ## Link to Live Demo
-[Live link here] 
+[[Live Demo](http://dailyplot.infinityfreeapp.com/)] 
